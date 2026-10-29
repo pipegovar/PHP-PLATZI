@@ -12,32 +12,30 @@ class Course
     
   }
 
-  public function getTitle(): string 
+  public function __get($name)
   {
+    if(property_exists($this, $name)) {
+      return $this->$name;
+    }
 
-    return $this->title;
-    
+    return null;
   }
 
-   public function getSubtitle(): string 
+  public function __toString()
   {
+    $html = "<h1>{$this->title}</h1>";
+	  $html .= "<h2>{$this->subtitle}</h2>";
+	  $html .= "<p>{$this->description}</p>";
 
-    return $this->subtitle;
-    
-  }
+    $html .= "<h3>Tags:</h3>";
 
-   public function getDescription(): string 
-  {
+    $html .= "<ul>";
+    foreach ($this->tags as $tag) {
+      $html .= "<li>{$tag}</li>";
+    }
+    $html .= "</ul>";
 
-    return $this->description;
-    
-  }
-
-   public function getTags(): array
-  {
-
-    return $this->tags;
-    
+	  return $html;
   }
 
   public function addTag(string $tag): void
