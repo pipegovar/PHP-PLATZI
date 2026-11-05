@@ -1,4 +1,7 @@
 <?php
+
+require 'CourseType.php';
+
 class Course 
 {
 
@@ -8,6 +11,8 @@ class Course
     protected string $subtitle,
     protected string $description,
     protected array $tags,
+    protected CourseType $type = CourseType:: FREE,
+    // type: free, paid
   ) {
     
   }
@@ -23,7 +28,7 @@ class Course
 
   public function __toString()
   {
-    $html = "<h1>{$this->title}</h1>";
+    $html = "<h1>{$this->title} - {$this->type->label()}</h1>";
 	  $html .= "<h2>{$this->subtitle}</h2>";
 	  $html .= "<p>{$this->description}</p>";
 
