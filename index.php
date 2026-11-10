@@ -1,13 +1,16 @@
 <?php 
 
-require 'Course.php';
+require __DIR__ . '/vendor/autoload.php';
 
+use App\Course;
+use App\CourseType;
 
 $course = new Course(
    title: 'Curso profesional de PHP y Laravel',
    subtitle: 'Aprende PHP y Laravel desde cero',
    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eos omnis dolorem, magnam reiciendis voluptates necessitatibus fuga tempora possimus ea laudantium vitae quibusdam similique minus dolore sunt veritatis enim eligendi.', 
    tags: ['PHP', 'Laravel', 'Javascript'],
+   type: CourseType::PAID,
    
 );
 
